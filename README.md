@@ -25,7 +25,7 @@ DeBERTa (Decoding-enhanced BERT with disentangled attention) improves the BERT a
 # Pre-trained Models
 
 Our pre-trained models are packaged into zipped files. You can download them from our [releases](https://huggingface.co/models?search=microsoft%2Fdeberta), or download an individual model via the links below:
-- [**XXLarge V2**](https://huggingface.co/microsoft/deberta-xxlarge-v2): the pre-trained XLarge model(**1.5B**). This is the model(89.9) that surpassed **T5 11B(89.3) and human performance(89.8)** on **SuperGLUE** for the first time. 
+- [**XXLarge V2(60%)**](https://huggingface.co/microsoft/deberta-xxlarge-v2): the pre-trained XLarge model(**1.5B**). This is the model(89.9) that surpassed **T5 11B(89.3) and human performance(89.8)** on **SuperGLUE** for the first time. 
 - [XLarge V2](https://huggingface.co/microsoft/deberta-xlarge-v2): the pre-trained XLarge model(900MB)
 - [XLarge](https://huggingface.co/microsoft/deberta-xlarge): the pre-trained XLarge model(750MB)
 - [XLarge MNLI](https://huggingface.co/microsoft/deberta-xlarge-mnli): the pre-trained XLarge model(750MB) fine-tuned with MNLI task
@@ -159,7 +159,7 @@ We report our numbers based on multple runs with different random seeds here. He
 
 |Task	 |Parameters|Command	|Results	|Running Time(8x32G V100 GPUs)|
 |--------|--------|---------------|---------------|-------------------------|
-|MNLI xxlarge v2|**1.5B**|	`experiments/glue/mnli_xlarge.sh`|	**91.7/91.8** +/-0.1|	4h|
+|MNLI xxlarge v2(60%)|**1.5B**|	`experiments/glue/mnli_xlarge.sh`|	**91.7/91.8** +/-0.1|	4h|
 |MNLI xlarge v2|**900M**|	`experiments/glue/mnli_xlarge.sh`|	91.65/91.55 +/-0.1|	2.5h|
 |MNLI xlarge|**750M**|	`experiments/glue/mnli_xlarge.sh`|	91.5/91.4 +/-0.1|	2.5h|
 |MNLI large|**380M**|	`experiments/glue/mnli_large.sh`|	91.2/91.0 +/-0.1|	2.5h|
