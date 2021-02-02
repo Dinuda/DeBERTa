@@ -215,8 +215,8 @@ def run_predict(args, model, device, eval_data, prefix=None):
           output_test_file = os.path.join(args.output_dir, "test_logits_{}_{}.txt".format(name, prefix))
           logger.info("***** Dump prediction results-{}-{} *****".format(name, prefix))
           logger.info("Location: {}".format(output_test_file))
-          np.savetxt(output_test_file, predicts, delimiter='\t')
-          predict_fn(predicts, args.output_dir, name, prefix)
+          np.savetxt(output_test_file, predicts.detach().cpu().numpy(), delimiter='\t')
+          predict_fn(predicts.detach().cpu().numpy(), args.output_dir, name, prefix)
 
 def main(args):
   if not args.do_train and not args.do_eval and not args.do_predict:
