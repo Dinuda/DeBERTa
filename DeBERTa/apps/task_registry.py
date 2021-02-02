@@ -43,3 +43,12 @@ def load_tasks(task_dir = None):
     m = os.path.splitext(os.path.basename(t))[0]
     if not m.startswith('_'):
       importlib.import_module(f'DeBERTa.apps.tasks.{m}')
+
+  if task_dir:
+    assert os.path.exists(task_dir), f"{task_dir} must be a valid directory."
+    customer_tasks = glob(os.path.join(task_dir, "*.py"))
+    sys.path.append(task_dir)
+    for t in customer_tasks:
+      m = os.path.splitext(os.path.basename(t))[0]
+      if not m.startswith('_'):
+        importlib.import_module(f'{m}')

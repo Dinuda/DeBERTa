@@ -10,6 +10,7 @@ from collections import OrderedDict,defaultdict,Sequence,Counter
 import numpy as np
 from ...utils import get_logger
 from ...utils import xtqdm as tqdm
+from ...data import example_to_feature
 from .metrics import *
 
 from ..models import SequenceClassificationModel
@@ -90,7 +91,6 @@ class DataTask():
       return lines
 
   def get_feature_fn(self, max_seq_len = 512, mask_gen = None, label_type='int', training=False):
-    from ..data import example_to_feature
     tokenizer = copy.deepcopy(self.tokenizer)
     def _example_to_feature(example, rng=None, ext_params=None, **kwargs):
       return example_to_feature(tokenizer, example, max_seq_len = max_seq_len, \

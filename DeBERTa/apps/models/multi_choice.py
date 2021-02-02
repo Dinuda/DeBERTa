@@ -23,9 +23,9 @@ __all__ = ['MultiChoiceModel']
 class MultiChoiceModel(NNModule):
   def __init__(self, config, num_labels = 2, drop_out=None, **kwargs):
     super().__init__(config)
-    self.bert = DeBERTa(config)
+    self.deberta = DeBERTa(config)
     self.num_labels = num_labels
-    self.classifier = nn.Linear(config.hidden_size, 1)
+    self.classifier = torch.nn.Linear(config.hidden_size, 1)
     drop_out = config.hidden_dropout_prob if drop_out is None else drop_out
     self.dropout = StableDropout(drop_out)
     self.apply(self.init_weights)
@@ -39,7 +39,7 @@ class MultiChoiceModel(NNModule):
       position_ids = position_ids.view([-1, position_ids.size(-1)])
     if input_mask is not None:
       input_mask = input_mask.view([-1, input_mask.size(-1)])
-    encoder_layers = self.bert(input_ids, token_type_ids=type_ids, attention_mask=input_mask,
+    encoder_layers = self.deberta(input_ids, token_type_ids=type_ids, attention_mask=input_mask,
         position_ids=position_ids, output_all_encoded_layers=True)
     seqout = encoder_layers[-1]
     cls = seqout[:,:1,:]

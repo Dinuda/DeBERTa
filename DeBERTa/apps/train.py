@@ -221,13 +221,12 @@ def run_predict(args, model, device, eval_data, prefix=None):
 def main(args):
   if not args.do_train and not args.do_eval and not args.do_predict:
     raise ValueError("At least one of `do_train` or `do_eval` or `do_predict` must be True.")
-  os.makedirs(args.output_dir, exist_ok=True)
   task_name = args.task_name.lower()
   random.seed(args.seed)
   np.random.seed(args.seed)
   torch.manual_seed(args.seed)
 
-  load_tasks()
+  load_tasks(args.task_dir)
   vocab_path, vocab_type = load_vocab(vocab_path = args.tokenizer_model, vocab_type = args.tokenizer_type, pretrained_id = args.init_model)
   tokenizer = tokenizers[vocab_type](vocab_path)
   task = tasks[task_name](tokenizer = tokenizer, max_seq_len = args.max_seq_length, data_dir = args.data_dir)
@@ -261,7 +260,7 @@ def main(args):
     run_predict(args, model, device, test_data, prefix=args.tag)
 
 def build_argument_parser():
-  parser = argparse.ArgumentParser(parents=[LASER.optims.get_args(), LASER.training.get_args()])
+  parser = argparse.ArgumentParser(parents=[LASER.optims.get_args(), LASER.training.get_args()], formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
   ## Required parameters
   parser.add_argument("--data_dir",
@@ -269,6 +268,11 @@ def build_argument_parser():
             type=str,
             required=True,
             help="The input data dir. Should contain the .tsv files (or other data files) for the task.")
+  parser.add_argument("--task_dir",
+            default=None,
+            type=str,
+            required=False,
+            help="The directory to load customized tasks.")
   parser.add_argument("--task_name",
             default=None,
             type=str,
@@ -353,8 +357,10 @@ def build_argument_parser():
   return parser
 
 if __name__ == "__main__":
+  os.environ["OMP_NUM_THREADS"] = "1"
   parser = build_argument_parser()
   args = parser.parse_args()
+  os.makedirs(args.output_dir, exist_ok=True)
   logger = set_logger(args.task_name, os.path.join(args.output_dir, 'training_{}.log'.format(args.task_name)))
   logger.info(args)
   try:

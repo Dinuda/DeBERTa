@@ -19,4 +19,17 @@ tag=Large
 Task=CoLA
 
 setup_glue_data $Task
-../utils/train.sh --config config.json  -t $Task --data $cache_dir/glue_tasks/$Task --tag $tag -i $init -o /tmp/ttonly/$tag/$task -- --num_train_epochs 5 --accumulative_update 1 --warmup 100 --learning_rate 1e-5 --train_batch_size 32 --max_seq_len 64 
+
+python -m DeBERTa.apps.train --model_config config.json  \
+	--tag $tag \
+	--task_name $Task \
+	--data_dir $cache_dir/glue_tasks/$Task \
+	--init_model $init \
+	--output_dir /tmp/ttonly/$tag/$task \
+	--num_train_epochs 5 \
+	--warmup 100 \
+	--learning_rate 1e-5 \
+	--train_batch_size 32 \
+	--cls_drop_out 0.15 \
+	--do_train \
+	--max_seq_len 64 
