@@ -175,7 +175,7 @@ And here are the results from the Base model
 
 |Task	 |Parameters|Command	|Results	|Running Time(8x32G V100 GPUs)|
 |--------|--------|---------------|---------------|-------------------------|
-|MNLI base|**130M**|	`experiments/glue/mnli_base.sh`|	88.8/88.5 +/-0.2|	1.5h|
+|MNLI base|**140M**|	`experiments/glue/mnli_base.sh`|	88.8/88.5 +/-0.2|	1.5h|
 
 ## Contacts
 
