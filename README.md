@@ -131,7 +131,8 @@ For glue tasks,
 1. Get the data
 ``` bash
 cache_dir=/tmp/DeBERTa/
-curl -J -L https://raw.githubusercontent.com/nyu-mll/jiant/master/scripts/download_glue_data.py | python3 - --data_dir $cache_dir/glue_tasks
+cd experiments/glue
+./download_data.sh  $cache_dir/glue_tasks
 ```
 
 2. Run task
