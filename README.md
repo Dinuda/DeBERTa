@@ -162,14 +162,14 @@ We report our numbers based on multple runs with different random seeds here. He
 |MNLI xxlarge v2(60%)|**1.5B**|	`experiments/glue/mnli_xlarge.sh`|	**91.7/91.8** +/-0.1|	4h|
 |MNLI xlarge v2|**900M**|	`experiments/glue/mnli_xlarge.sh`|	91.65/91.55 +/-0.1|	2.5h|
 |MNLI xlarge|**750M**|	`experiments/glue/mnli_xlarge.sh`|	91.5/91.4 +/-0.1|	2.5h|
-|MNLI large|**380M**|	`experiments/glue/mnli_large.sh`|	91.2/91.0 +/-0.1|	2.5h|
-|QQP large|**380M**|	`experiments/glue/qqp_large.sh`|	92.3 +/-0.1|		6h|
-|QNLI large|**380M**|	`experiments/glue/qnli_large.sh`|	95.3 +/-0.2|		2h|
-|MRPC large|**380M**|	`experiments/glue/mrpc_large.sh`|	93.4 +/-0.5|		0.5h|
-|RTE large|**380M**|	`experiments/glue/rte_large.sh`|	87.7 +/-1.0|		0.5h|
-|SST-2 large|**380M**|	`experiments/glue/sst2_large.sh`|	96.7 +/-0.3|		1h|
-|STS-b large|**380M**|	`experiments/glue/Stsb_large.sh`|	92.5 +/-0.3|		0.5h|
-|CoLA large|**380M**|	`experiments/glue/cola_large.sh`|	70.5 +/-1.0|		0.5h|
+|MNLI large|**400M**|	`experiments/glue/mnli_large.sh`|	91.2/91.0 +/-0.1|	2.5h|
+|QQP large|**400M**|	`experiments/glue/qqp_large.sh`|	92.3 +/-0.1|		6h|
+|QNLI large|**400M**|	`experiments/glue/qnli_large.sh`|	95.3 +/-0.2|		2h|
+|MRPC large|**400M**|	`experiments/glue/mrpc_large.sh`|	93.4 +/-0.5|		0.5h|
+|RTE large|**400M**|	`experiments/glue/rte_large.sh`|	87.7 +/-1.0|		0.5h|
+|SST-2 large|**400M**|	`experiments/glue/sst2_large.sh`|	96.7 +/-0.3|		1h|
+|STS-b large|**400M**|	`experiments/glue/Stsb_large.sh`|	92.5 +/-0.3|		0.5h|
+|CoLA large|**400M**|	`experiments/glue/cola_large.sh`|	70.5 +/-1.0|		0.5h|
 
 And here are the results from the Base model
 
