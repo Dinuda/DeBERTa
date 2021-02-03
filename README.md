@@ -40,7 +40,7 @@ Our pre-trained models are packaged into zipped files. You can download them fro
 |[Base-MNLI](https://huggingface.co/microsoft/deberta-base-mnli)|140M|768|12|Fine-turned with MNLI|
 
 ## Note 
-- 1 This is the model(89.9) that surpassed **T5 11B(89.3) and human performance(89.8)** on **SuperGLUE** for the first time. 128K new SPM vocab.
+- 1 This is the model(89.9) that surpassed **T5 11B(89.3) and human performance(89.8)** on **SuperGLUE** for the first time. 128K new SPM vocab. However, due to computation resource limitation, the model only finished 60% of the entire training.
 
 # Try the code
 
