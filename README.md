@@ -25,16 +25,21 @@ DeBERTa (Decoding-enhanced BERT with disentangled attention) improves the BERT a
 # Pre-trained Models
 
 Our pre-trained models are packaged into zipped files. You can download them from our [releases](https://huggingface.co/models?search=microsoft%2Fdeberta), or download an individual model via the links below:
-- [**XXLarge V2(60%)**](https://huggingface.co/microsoft/deberta-xxlarge-v2): the pre-trained XLarge model(**1.5B**). This is the model(89.9) that surpassed **T5 11B(89.3) and human performance(89.8)** on **SuperGLUE** for the first time. 
-- [XLarge V2](https://huggingface.co/microsoft/deberta-xlarge-v2): the pre-trained XLarge model(900MB)
-- [XLarge](https://huggingface.co/microsoft/deberta-xlarge): the pre-trained XLarge model(750MB)
-- [XLarge MNLI](https://huggingface.co/microsoft/deberta-xlarge-mnli): the pre-trained XLarge model(750MB) fine-tuned with MNLI task
-- [XLarge](https://huggingface.co/microsoft/deberta-xlarge): the pre-trained XLarge model(750MB)
-- [Large](https://huggingface.co/microsoft/deberta-large): the pre-trained Large model
-- [Base](https://huggingface.co/microsoft/deberta-base) : the pre-trained Base model
-- [Large MNLI](https://huggingface.co/microsoft/deberta-large-mnli): Large model fine-tuned with MNLI task
-- [Base MNLI](https://huggingface.co/microsoft/deberta-base-mnli): Base model fine-tuned with MNLI task
 
+|Model        | Parameters| Hidden Size | Layers| Note|
+|-------------|------|-----|-----|---------|
+|[**XXLarge-V2(60%)**](https://huggingface.co/microsoft/deberta-xxlarge-v2)<sup>1</sup>|1.5B|1536| 48| |
+|[XLarge-V2](https://huggingface.co/microsoft/deberta-xlarge-v2)|900M|1536| 24| 128K new SPM vocab|
+|[XLarge](https://huggingface.co/microsoft/deberta-xlarge)|750M|1024|48| Same vocab as RoBERTa|
+|[Large](https://huggingface.co/microsoft/deberta-large)|400M|1024|24|Same vocab as RoBERTa|
+|[Base](https://huggingface.co/microsoft/deberta-base)|140M|768|12|Same vocab as RoBERTa|
+|[XXLarge-V2-MNLI](https://huggingface.co/microsoft/deberta-xxlarge-v2-mnli)|1.5B|1536| 24|Fine-turned with MNLI |
+|[XLarge-V2-MNLI](https://huggingface.co/microsoft/deberta-xlarge-v2-mnli)|900M|1536| 24|Fine-turned with MNLI |
+|[XLarge--MNLI](https://huggingface.co/microsoft/deberta-xlarge-mnli)|750M|1024|48|Fine-turned with MNLI|
+|[Large-MNLI](https://huggingface.co/microsoft/deberta-large-mnli)|400M|1024|24|Fine-turned with MNLI|
+|[Base-MNLI](https://huggingface.co/microsoft/deberta-base-mnli)|140M|768|12|Fine-turned with MNLI|
+
+- Note 1) This is the model(89.9) that surpassed **T5 11B(89.3) and human performance(89.8)** on **SuperGLUE** for the first time. 128K new SPM vocab.
 
 # Try the code
 
@@ -52,6 +57,7 @@ Read our [documentation](https://deberta.readthedocs.io/en/latest/)
 
 There are several ways to try our code,
 ### Use docker
+
 Docker is the recommended way to run the code as we already built every dependency into the our docker [bagai/deberta](https://hub.docker.com/r/bagai/deberta) and you can follow the [docker official site](https://docs.docker.com/engine/install/ubuntu/) to install docker on your machine.
 
 To run with docker, make sure your system fullfil the requirements in the above list. Here are the steps to try the GLUE experiments: Pull the code, run `./run_docker.sh` 
@@ -157,25 +163,25 @@ python3 -m DeBERTa.apps.train --task_name $task --do_train  \
 Our fine-tuning experiments are carried on half a DGX-2 node with 8x32 V100 GPU cards, the results may vary due to different GPU models, drivers, CUDA SDK versions, using FP16 or FP32, and random seeds. 
 We report our numbers based on multple runs with different random seeds here. Here are the results from the Large model:
 
-|Task	 |Parameters|Command	|Results	|Running Time(8x32G V100 GPUs)|
-|--------|--------|---------------|---------------|-------------------------|
-|MNLI xxlarge v2(60%)|**1.5B**|	`experiments/glue/mnli_xlarge.sh`|	**91.7/91.8** +/-0.1|	4h|
-|MNLI xlarge v2|**900M**|	`experiments/glue/mnli_xlarge.sh`|	91.65/91.55 +/-0.1|	2.5h|
-|MNLI xlarge|**750M**|	`experiments/glue/mnli_xlarge.sh`|	91.5/91.4 +/-0.1|	2.5h|
-|MNLI large|**400M**|	`experiments/glue/mnli_large.sh`|	91.2/91.0 +/-0.1|	2.5h|
-|QQP large|**400M**|	`experiments/glue/qqp_large.sh`|	92.3 +/-0.1|		6h|
-|QNLI large|**400M**|	`experiments/glue/qnli_large.sh`|	95.3 +/-0.2|		2h|
-|MRPC large|**400M**|	`experiments/glue/mrpc_large.sh`|	93.4 +/-0.5|		0.5h|
-|RTE large|**400M**|	`experiments/glue/rte_large.sh`|	87.7 +/-1.0|		0.5h|
-|SST-2 large|**400M**|	`experiments/glue/sst2_large.sh`|	96.7 +/-0.3|		1h|
-|STS-b large|**400M**|	`experiments/glue/Stsb_large.sh`|	92.5 +/-0.3|		0.5h|
-|CoLA large|**400M**|	`experiments/glue/cola_large.sh`|	70.5 +/-1.0|		0.5h|
+|Task	 |Command	|Results	|Running Time(8x32G V100 GPUs)|
+|--------|---------------|---------------|-------------------------|
+|MNLI xxlarge v2(60%)|	`experiments/glue/mnli_xlarge.sh`|	**91.7/91.8** +/-0.1|	4h|
+|MNLI xlarge v2|	`experiments/glue/mnli_xlarge.sh`|	91.65/91.55 +/-0.1|	2.5h|
+|MNLI xlarge*|	`experiments/glue/mnli_xlarge.sh`|	91.5/91.4 +/-0.1|	2.5h|
+|MNLI large|	`experiments/glue/mnli_large.sh`|	91.2/91.0 +/-0.1|	2.5h|
+|QQP large|	`experiments/glue/qqp_large.sh`|	92.3 +/-0.1|		6h|
+|QNLI large|	`experiments/glue/qnli_large.sh`|	95.3 +/-0.2|		2h|
+|MRPC large|	`experiments/glue/mrpc_large.sh`|	93.4 +/-0.5|		0.5h|
+|RTE large|	`experiments/glue/rte_large.sh`|	87.7 +/-1.0|		0.5h|
+|SST-2 large|	`experiments/glue/sst2_large.sh`|	96.7 +/-0.3|		1h|
+|STS-b large|	`experiments/glue/Stsb_large.sh`|	92.5 +/-0.3|		0.5h|
+|CoLA large|	`experiments/glue/cola_large.sh`|	70.5 +/-1.0|		0.5h|
 
 And here are the results from the Base model
 
-|Task	 |Parameters|Command	|Results	|Running Time(8x32G V100 GPUs)|
-|--------|--------|---------------|---------------|-------------------------|
-|MNLI base|**140M**|	`experiments/glue/mnli_base.sh`|	88.8/88.5 +/-0.2|	1.5h|
+|Task	 |Command	|Results	|Running Time(8x32G V100 GPUs)|
+|--------|---------------|---------------|-------------------------|
+|MNLI base|	`experiments/glue/mnli_base.sh`|	88.8/88.5 +/-0.2|	1.5h|
 
 ## Contacts
 
