@@ -33,7 +33,7 @@ Our pre-trained models are packaged into zipped files. You can download them fro
 |[XLarge](https://huggingface.co/microsoft/deberta-xlarge)|750M|1024|48| Same vocab as RoBERTa|
 |[Large](https://huggingface.co/microsoft/deberta-large)|400M|1024|24|Same vocab as RoBERTa|
 |[Base](https://huggingface.co/microsoft/deberta-base)|140M|768|12|Same vocab as RoBERTa|
-|[XXLarge-V2-MNLI](https://huggingface.co/microsoft/deberta-xxlarge-v2-mnli)|1.5B|1536| 24|Fine-turned with MNLI |
+|[XXLarge-V2-MNLI](https://huggingface.co/microsoft/deberta-xxlarge-v2-mnli)|1.5B|1536| 48|Fine-turned with MNLI |
 |[XLarge-V2-MNLI](https://huggingface.co/microsoft/deberta-xlarge-v2-mnli)|900M|1536| 24|Fine-turned with MNLI |
 |[XLarge--MNLI](https://huggingface.co/microsoft/deberta-xlarge-mnli)|750M|1024|48|Fine-turned with MNLI|
 |[Large-MNLI](https://huggingface.co/microsoft/deberta-large-mnli)|400M|1024|24|Fine-turned with MNLI|
